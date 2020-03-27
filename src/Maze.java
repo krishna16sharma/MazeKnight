@@ -7,6 +7,7 @@ public class Maze {
     static int cArmor=0;     //Flag for ChainMail Armor
     static int dragonEncounter = 0;     //Flag to check if dragon was encountered.
     static int bcEncountered = 0;       //Flag to check if Bandit Chief was encountered
+    static int innDiscovered=0;
     static int wSword=0;
     static int witchDefeated=0;
     static int bcDefeated=0;
@@ -74,6 +75,25 @@ public class Maze {
             if(x>=2 && y<2){
                 encounterRate = (int) (Math.random() * 10);
                 if(bcDefeated==0){
+                    if(x == 4 && y == 0){
+                        Maze.delay(1000);
+                        System.out.println("It\'s an inn");
+                        Maze.delay(1000);
+                        if(innDiscovered == 0) {
+                            System.out.println("Knight:\n\tI can probably get refreshed inside...");
+                            Maze.delay(2000);
+                            System.out.println("...");
+                            Maze.delay(1000);
+                            System.out.println("Knight:\n\tThat\'s funny...It is locked from the inside.");
+                            Maze.delay(2000);
+                            innDiscovered=1;
+                        }
+                        System.out.println("Inn keeper:\n\tGaah! A b-bandit\'s at my door!");
+                        Maze.delay(1000);
+                        System.out.println("\n\tWhy won't that moron leave already?");
+                        Maze.delay(1000);
+                        System.out.println("Knight:\n\tI can hear you, you know?");
+                    }
                     if(encounterRate>8 && bcEncountered==0){
                         Maze.delay(1000);
                         System.out.println("???:\n\tOi!");
@@ -88,12 +108,13 @@ public class Maze {
                         Maze.delay(1000);
                         System.out.println("Bandit Chief:\n\t(W-What?)");
                         Maze.delay(1000);
-                        System.out.println("\t(This guy is kinda scary now...but my reputation\'s at stake here!)");
+                        System.out.println("\t(This guy is kinda scary...but my reputation\'s at stake here!)");
                         Maze.delay(4000);
+                        bcEncountered=1;
                         banditChief bc = new banditChief();
                         Battle b = new Battle(knight,bc);
                     }
-                    else if(encounterRate>8 && bcEncountered==0){
+                    else if(encounterRate>8 && bcEncountered==1){
                         Maze.delay(1000);
                         System.out.println("???:\n\tGAAH!");
                         Maze.delay(1000);
@@ -111,8 +132,28 @@ public class Maze {
                     }
                 }
                 else{
-                    if(x == 4 && y==0){
+                    if(x == 4 && y == 0){
                         Maze.delay(1000);
+                        System.out.println("Inn keeper:\n\tWelcome, Brave knight!");
+                        Maze.delay(1000);
+                        int randDialogue = (int) (Math.random()*5);
+                        if(randDialogue <= 1) {
+                            System.out.println("You slept for some time and woke up feeling refreshed");
+                            Maze.delay(2000);
+                            System.out.println("Inn Keeper:\n\tI used to be an adventurer like you.\n\tBut then I took an " +
+                                    "arrow to the knee");
+                        }
+                        else if(randDialogue <=4){
+                            System.out.println("You had some food and drinks...\nYou are feeling energetic again!");
+                            Maze.delay(2000);
+                            System.out.println("Inn Keeper:\n\tYou sure showed the Bandits who\'s the boss around these parts!");
+                            Maze.delay(3000);
+                            System.out.println("\n\tThis is the least I can do!");
+                        }
+                        knight.health=100;
+                        knight.status="healthy";
+                        Maze.delay(1000);
+                        System.out.println("Inn keeper:\n\tFeel free to come here again!");
                     }
                 }
             }
@@ -142,8 +183,8 @@ public class Maze {
                     delay(4000);
                     System.out.println("Knight:\n\tNope! Neither is the gold sword which you'll bring soon.");
                     delay(4000);
-                    System.out.println("Fairy\n\tOh! You seem to know the drill....Not fun at all...");
-                    delay(1000);
+                    System.out.println("Fairy\n\tOh! You seem to know the everything, Mr.Know-it-all....Not fun at all...");
+                    delay(2000);
                     System.out.println("Take this new sword and get outta my sight!");
                     delay(2000);
                     System.out.println("You received the Warrior\'s sword!!");
