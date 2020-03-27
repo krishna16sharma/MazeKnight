@@ -41,15 +41,7 @@ public class Battle {
         }
         return false;
     }
-    public void copyStats(Enemies e){
-        int arm = e.getArmor();
-        int dmg = e.getDamage();
-    }
-    public void copyStats(Knight k){
-        int arm = k.armor;
-        int dmg = k.damage;
-        String st  = k.status;
-    }
+    
     public void e_Fight() throws InterruptedException{        //Enemy's Turn of the fight
 
         if(e.getHealth()>0){//Knight's didn't win yet, so enemy's turn
@@ -76,7 +68,7 @@ public class Battle {
             System.out.println(e.getName() + "'s condition:");
             System.out.println("Health: " + e.getHealth());
             Maze.delay(300);
-            System.out.println("What will you do?\n(F)ight\t(I)tem\t(R)un");
+            System.out.println("What will you do?\n(F)ight\t(R)un");
             String action = battle.next();
             action = action.toLowerCase();
             char ch = action.charAt(0);
