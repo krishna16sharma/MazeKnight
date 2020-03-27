@@ -27,7 +27,10 @@ public class Battle {
             e_count=0;
             //k.map();
             if(enemies.getName().equals("Witch")){
-                Maze.witchDefeated=1;
+                Maze.witchDefeated = 1;
+            }
+            else if(enemies.getName().equals("Bandit Chief")){
+                Maze.bcDefeated = 1;
             }
             return true;
         }
@@ -41,13 +44,21 @@ public class Battle {
         }
         return false;
     }
-    
+    public void copyStats(Enemies e){
+        int arm = e.getArmor();
+        int dmg = e.getDamage();
+    }
+    public void copyStats(Knight k){
+        int arm = k.armor;
+        int dmg = k.damage;
+        String st  = k.status;
+    }
     public void e_Fight() throws InterruptedException{        //Enemy's Turn of the fight
 
         if(e.getHealth()>0){//Knight's didn't win yet, so enemy's turn
             if(eTurn == false) {
                 if(splChance > 3) {
-                    e.SplAction(e);
+                    e.SplAction(e,knight);
                     eTurn = true;
                 }
             }
@@ -68,7 +79,7 @@ public class Battle {
             System.out.println(e.getName() + "'s condition:");
             System.out.println("Health: " + e.getHealth());
             Maze.delay(300);
-            System.out.println("What will you do?\n(F)ight\t(R)un");
+            System.out.println("What will you do?\n(F)ight\t(I)tem\t(R)un");
             String action = battle.next();
             action = action.toLowerCase();
             char ch = action.charAt(0);

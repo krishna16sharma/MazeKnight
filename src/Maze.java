@@ -1,12 +1,15 @@
 /* This class runs the new game.
  */
 public class Maze {
+
     public static char[][] maze= new char[5][5];
     public static int x=4,y=1;//x=row , y= column
     static int cArmor=0;     //Flag for ChainMail Armor
-    static int dragonEncounter=0;     //Flag to check if dragon was encountered.
+    static int dragonEncounter = 0;     //Flag to check if dragon was encountered.
+    static int bcEncountered = 0;       //Flag to check if Bandit Chief was encountered
     static int wSword=0;
     static int witchDefeated=0;
+    static int bcDefeated=0;
     //Function to generate delay. Makes it more comfortable to read texts
     //Will need to specify throws Interrupted Exception while using
     public static void delay(int t) throws InterruptedException{
@@ -15,6 +18,7 @@ public class Maze {
     //Main Function
     public static void main(String[] args) throws InterruptedException {
         Maze m = new Maze();
+        int encounterRate = 0;  //Chance to encounter enemy
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 maze[i][j]='-';
@@ -29,6 +33,7 @@ public class Maze {
 
         while(knight.alive.equals("yes")) {
             knight.move(x, y);
+            knight.map();
             if(x==0 && y==4){
                 if(dragonEncounter == 0) {
                     System.out.println("It's a quiet clearing.");
@@ -64,6 +69,51 @@ public class Maze {
                 else{
                     delay(1000);
                     System.out.println("It\'s the chest that you opened before...You\nare slightly disappointed.");
+                }
+            }
+            if(x>=2 && y<2){
+                encounterRate = (int) (Math.random() * 10);
+                if(bcDefeated==0){
+                    if(encounterRate>8 && bcEncountered==0){
+                        Maze.delay(1000);
+                        System.out.println("???:\n\tOi!");
+                        Maze.delay(1000);
+                        System.out.println("...!");
+                        Maze.delay(1000);
+                        System.out.println("???:\n\tI'm the one in charge around these parts!");
+                        Maze.delay(2000);
+                        System.out.println("\tHand over all your belongings if you want to live!");
+                        Maze.delay(3000);
+                        System.out.println("Knight:\n\tI refuse.");
+                        Maze.delay(1000);
+                        System.out.println("Bandit Chief:\n\t(W-What?)");
+                        Maze.delay(1000);
+                        System.out.println("\t(This guy is kinda scary now...but my reputation\'s at stake here!)");
+                        Maze.delay(4000);
+                        banditChief bc = new banditChief();
+                        Battle b = new Battle(knight,bc);
+                    }
+                    else if(encounterRate>8 && bcEncountered==0){
+                        Maze.delay(1000);
+                        System.out.println("???:\n\tGAAH!");
+                        Maze.delay(1000);
+                        System.out.println("Bandit Chief: Y-you again?");
+                        Maze.delay(1000);
+                        System.out.println("Knight:\n\t I just decided to spare you last time...");
+                        Maze.delay(2000);
+                        System.out.println("\tIt\'s annoying but I'll fight you!");
+                        banditChief bc = new banditChief();
+                        Battle b = new Battle(knight,bc);
+                    }
+                    else if(encounterRate>5){
+                        bandit bandit = new bandit();
+                        Battle b = new Battle(knight,bandit);
+                    }
+                }
+                else{
+                    if(x == 4 && y==0){
+                        Maze.delay(1000);
+                    }
                 }
             }
             if(x==1&&y==3){
@@ -108,19 +158,17 @@ public class Maze {
                     System.out.println("But it is bear territory...better leave it alone.");
                 }
                 if(y>=3){
-                    int encounterRate = (int) (Math.random() * 10);
+                    encounterRate = (int) (Math.random() * 10);
                     if(encounterRate>7){
                         bear bear = new bear();
                         Battle b = new Battle(knight,bear);
                     }
                 }
-
             }
             if(knight.alive.equals("no")){
                 delay(1000);
                 System.out.println("You died bravely...");
             }
-            knight.map();
         }
     }
 }

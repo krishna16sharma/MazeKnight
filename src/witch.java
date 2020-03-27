@@ -12,7 +12,7 @@ public class witch extends Enemies{
         Maze.delay(100);
         System.out.println("It's a witch!");
     }
-    public void SplAction(Enemies e) throws InterruptedException {
+    public void SplAction(Enemies e,Knight k) throws InterruptedException {
         Maze.delay(100);
         this.setHealth(30);
         System.out.println("The witch drank some potion!");

@@ -74,6 +74,9 @@ public class Knight {
         int h=e.getHealth();
         int dmg=(int)(this.damage*this.damage)/(this.damage+e.getArmor());  //damage calculation
         h-=dmg;
+        if(h<0){
+            h=0;
+        }
         e.setHealth(h);
         return dmg;
     }

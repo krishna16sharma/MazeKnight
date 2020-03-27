@@ -52,7 +52,7 @@ public class Enemies {
         this.damage = damage;
     }
 
-    public void SplAction(Enemies e) throws InterruptedException{
+    public void SplAction(Enemies e,Knight knight) throws InterruptedException{
 
     }
 }
