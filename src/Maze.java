@@ -17,6 +17,8 @@ public class Maze {
     static int bcDefeated=0;
     static int gsDefeated=0;
     static int dragDefeated=0;
+    static int dragKilled = 0;
+    static int princessDefeated = 0;
     static int potion = 0;
     static int sCounter=0;  //Counter for serpents killed
     //Function to generate delay. Makes it more comfortable to read texts
@@ -24,9 +26,80 @@ public class Maze {
     public static void delay(int t) throws InterruptedException{
         Thread.sleep(t);
     }
+
+    //Display achievements after game is over
+    public static void Achievements() throws InterruptedException{
+        delay(1000);
+        System.out.println("Achievements:");
+        delay(2000);
+        if(cArmor == 1){
+            System.out.println("Chain Mail Armor found!");
+        }
+        if(dArmor == 1){
+            System.out.println("Dragonbane Armor found!");
+        }
+        if(wSword == 1){
+            System.out.println("Warrior\'s Sword found!");
+        }
+        if(dSword == 1){
+            System.out.println("Dragonbane Sword found!");
+        }
+        if(witchDefeated == 1){
+            System.out.println("Witch defeated! \t");
+        }
+        if(bcDefeated == 1){
+            System.out.println("Bandits Begone! Bandit King defeated!");
+        }
+        if(gsDefeated == 1){
+            System.out.println("You're Hissstory! Giant Serpent defeated!");
+        }
+        if(dragDefeated == 1){
+            System.out.println("Conqueror of dragons! Dragon defeated!");
+        }
+        if(dragKilled == 1 && dragDefeated == 1){
+            System.out.println("Dragon Slayer! Dragon Killed!");
+        }
+        if(dragDefeated == 1 && dragKilled == 0){
+            System.out.println("Dragon\'s friend! Didn\'t kill dragon.");
+        }
+        if(princessDefeated == 1){
+            System.out.println("True Knight! Evil princess defeated!");
+        }
+        delay(1000);
+        System.out.println("Thanks for playing!");
+        delay(2000);
+        System.exit(0);
+    }
     //Main Function
+    public void Intro() throws InterruptedException{
+        System.out.println("Once upon a time, in a kingdom far, far away,");
+        delay(2000);
+        System.out.println("there lived a very troubled King.");
+        delay(3000);
+        System.out.println("The kingdom was once attacked by a dragon and it\'s wealth was looted.");
+        delay(4000);
+        System.out.println("Even the princess went missing after the dragon attacked for the first time");
+        delay(4000);
+        System.out.println("The dragon returned frequently and looted the kingdom and the neighboring kingdoms");
+        delay(5000);
+        System.out.println("Many tried to fend it off but they died in battle with the beast.");
+        delay(2000);
+        System.out.println("You are a knight who didn\'t get an opportunity to showcase your talent");
+        delay(4000);
+        System.out.println("You\'ve always wanted to be recognised by the King.");
+        delay(2000);
+        System.out.println("So you set out to the forest where the dragon was sighted to slay it,");
+        delay(2000);
+        System.out.println("and find the princess.");
+    }
     public static void main(String[] args) throws InterruptedException {
+        Scanner skip = new Scanner(System.in);
+        System.out.println("Welcome to MazeKnight!\nDo you want to read the introduction?\n(Y)es\t(N)o");
+        char ip = skip.next().toLowerCase().charAt(0);
         Maze m = new Maze();
+        if(ip=='y') {
+            m.Intro();
+        }
         int encounterRate = 0;  //Chance to encounter enemy
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -37,7 +110,6 @@ public class Maze {
                 System.out.print(maze[i][j]+" ");
             }System.out.println();
         }
-
         Knight knight=new Knight();
 
         while(knight.alive.equals("yes")) {
@@ -45,7 +117,7 @@ public class Maze {
             knight.map();
             if(x==0 && y==4){
                 if(dragonEncounter == 0) {
-                    System.out.println("It's a quiet clearing.");
+                    System.out.println("There is a castle!\nIt is quiet here.");
                     delay(2000);
                     System.out.println("Almost too quiet...");
                     delay(500);
@@ -115,14 +187,13 @@ public class Maze {
                         }
                         System.out.println("Inn keeper:\n\tGaah! A b-bandit\'s at my door!");
                         Maze.delay(1000);
-                        System.out.println("\n\tWhy won't that moron leave already?");
+                        System.out.println("\tWhy won't that moron leave already?");
                         Maze.delay(1000);
                         System.out.println("Knight:\n\tI can hear you, you know?");
                     }
                     if(encounterRate>8 && bcEncountered==0){
-                        Maze.delay(1000);
                         System.out.println("???:\n\tOi!");
-                        Maze.delay(1000);
+                        Maze.delay(2000);
                         System.out.println("...!");
                         Maze.delay(1000);
                         System.out.println("???:\n\tI'm the one in charge around these parts!");
@@ -182,6 +253,13 @@ public class Maze {
                     }
                 }
             }
+            if(x==1 && y==4){
+                System.out.println("You see charred trees nearby...");
+                delay(1000);
+                System.out.println("Knight:\n\tI sense danger...\n\tHope my equipment is sufficient to deal\n\t" +
+                        "with whatever threat I encounter....");
+                delay(3000);
+            }
             if(x==1&&y==3){
                 if(witchDefeated==0) {
                     witch w = new witch();
@@ -200,6 +278,7 @@ public class Maze {
                         if(inp=='y') {
                             Maze.delay(1000);
                             System.out.println("You consumed the potion.\nYour Health was restored!");
+                            knight.health=100;
                             potion = 1;
                         }
                     }
@@ -247,6 +326,7 @@ public class Maze {
             if(knight.alive.equals("no")){
                 delay(1000);
                 System.out.println("You died bravely...");
+                Achievements();
             }
         }
     }

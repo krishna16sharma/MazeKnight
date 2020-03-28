@@ -41,6 +41,9 @@ public class dragon extends Enemies{
             System.out.println("The dragon hurled a huge ball of fire towards you!");
             int dmg=(int)(50*50)/(50+k.armor);
             k.health-=dmg;
+            if(k.health<0){
+                k.health=0;
+            }
             System.out.println("You took "+dmg+" damage!");
         }
     }

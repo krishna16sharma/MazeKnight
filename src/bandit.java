@@ -19,6 +19,9 @@ public class bandit extends Enemies{
         System.out.println("Bandit:\n\tTAKE THIS!!");
         int dmg=(int)(20*20)/(20+k.armor);
         k.health-=dmg;
+        if(k.health<0){
+            k.health=0;
+        }
         System.out.println("You took "+dmg+" damage!");
     }
 }
