@@ -8,7 +8,7 @@ public class Knight {
     int damage;
     public String alive;
     public String status;
-    ArrayList bag = new ArrayList<>();
+    //ArrayList bag = new ArrayList<>();
 
     Knight(){   //Initialize stats for Knight
         health=100;

@@ -3,7 +3,7 @@ public class bear extends Enemies{
     public bear() throws InterruptedException{
         this.setName("Bear");
         this.setHealth(120);
-        this.setDamage(40);
+        this.setDamage(35);
     }
     @Override
     public void Encounter() throws InterruptedException {

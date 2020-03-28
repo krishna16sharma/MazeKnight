@@ -1,16 +1,24 @@
+import java.util.Scanner;
+
 /* This class runs the new game.
  */
 public class Maze {
 
     public static char[][] maze= new char[5][5];
     public static int x=4,y=1;//x=row , y= column
-    static int cArmor=0;     //Flag for ChainMail Armor
+    static int cArmor = 0;     //Flag for ChainMail Armor
+    static int dArmor = 0;
     static int dragonEncounter = 0;     //Flag to check if dragon was encountered.
     static int bcEncountered = 0;       //Flag to check if Bandit Chief was encountered
     static int innDiscovered=0;
     static int wSword=0;
+    static int dSword=0;
     static int witchDefeated=0;
     static int bcDefeated=0;
+    static int gsDefeated=0;
+    static int dragDefeated=0;
+    static int potion = 0;
+    static int sCounter=0;  //Counter for serpents killed
     //Function to generate delay. Makes it more comfortable to read texts
     //Will need to specify throws Interrupted Exception while using
     public static void delay(int t) throws InterruptedException{
@@ -70,6 +78,23 @@ public class Maze {
                 else{
                     delay(1000);
                     System.out.println("It\'s the chest that you opened before...You\nare slightly disappointed.");
+                    delay(1000);
+                }
+            }
+            if(x < 3 && y < 2){
+                encounterRate = (int) (Math.random() * 8);
+                if(encounterRate > 5){
+                    Serpent serpent = new Serpent();
+                    Battle b = new Battle(knight,serpent);
+                }
+                else if(dSword == 1 && gsDefeated == 0){
+                    System.out.println("***Rumble Rumble***");
+                    Maze.delay(1000);
+                    System.out.println("Knight:\n\tSomething is underground!");
+                    Maze.delay(2000);
+                    System.out.println("A giant serpent emerged from the ground!");
+                    giantSerpent gs = new giantSerpent();
+                    Battle b = new Battle(knight,gs);
                 }
             }
             if(x>=2 && y<2){
@@ -148,7 +173,7 @@ public class Maze {
                             Maze.delay(2000);
                             System.out.println("Inn Keeper:\n\tYou sure showed the Bandits who\'s the boss around these parts!");
                             Maze.delay(3000);
-                            System.out.println("\n\tThis is the least I can do!");
+                            System.out.println("\tThis is the least I can do!");
                         }
                         knight.health=100;
                         knight.status="healthy";
@@ -165,6 +190,19 @@ public class Maze {
                 else{
                     delay(1000);
                     System.out.println("It\'s the witch's hut...");
+                    delay(1000);
+                    if(potion ==0) {
+                        Scanner input = new Scanner(System.in);
+                        System.out.println("You found a bottle of potion.");
+                        delay(1000);
+                        System.out.println("Knight:\n\tShould I consume this?\n(Y)es\t(N)o");
+                        char inp = input.next().toLowerCase().charAt(0);
+                        if(inp=='y') {
+                            Maze.delay(1000);
+                            System.out.println("You consumed the potion.\nYour Health was restored!");
+                            potion = 1;
+                        }
+                    }
                 }
             }
             if(x>=3){

@@ -12,25 +12,60 @@ public class Battle {
     public Battle(Knight knight,Enemies e) throws InterruptedException {
         this.e=e;
         this.knight=knight;
-        this.e_count=0;
-        this.k_count=0;
+        //this.e_count=0;
+        //this.k_count=0;
         //Start Battle
         this.copyStats(e);
         this.copyStats(knight);
         this.choice(knight);    //Calls function for Knight's turn
     }
 
-    public boolean isVictorious(Knight k,Enemies enemies){   //Checks if player wins
+    public boolean isVictorious(Knight k,Enemies enemies) throws InterruptedException{   //Checks if player wins
         if(enemies.getHealth()==0){
             System.out.println("You defeated "+enemies.getName()+"!");
-            k_count=0;
-            e_count=0;
+            //k_count=0;
+            //e_count=0;
+            if(e.getName().equals("Serpent")){
+               Maze.sCounter+=1;
+               if(Maze.sCounter>=3 && Maze.wSword==1 && Maze.dSword==0){
+                   Maze.delay(1000);
+                   System.out.println("The serpent spat something out!");
+                   Maze.delay(1000);
+                   System.out.println("Unbelievable! You found a sword!");
+                   Maze.delay(1000);
+                   System.out.println("Not just any sword! The legendary Dragonbane Sword!");
+                   Maze.delay(2000);
+                   System.out.println("You equipped the Dragonbane Sword!");
+                   knight.damage=30;
+                   Maze.dSword=1;
+                   System.out.println("Knight:\n\tThis sword is especially strong against dragons...");
+               }
+            }
             //k.map();
             if(enemies.getName().equals("Witch")){
                 Maze.witchDefeated = 1;
             }
             else if(enemies.getName().equals("Bandit Chief")){
                 Maze.bcDefeated = 1;
+            }
+            else if(enemies.getName().equals("Giant Serpent")){
+                Maze.gsDefeated = 1;
+                Maze.delay(1000);
+                System.out.println("Knight:\n\tIt is dead...");
+                Maze.delay(2000);
+                System.out.println("You notice something bulging in its stomach.");
+                Maze.delay(1000);
+                System.out.println("You make a cut in its stomach...");
+                Maze.delay(2000);
+                System.out.println("No way!");
+                Maze.delay(1000);
+                System.out.println("You found the legendary Dragonbane Armor!");
+                Maze.delay(1000);
+                System.out.println("You equipped the Dragonbane Armor!");
+                System.out.println("Knight:\n\tI hear that this armor is the best in the land.");
+                Maze.delay(1000);
+                knight.armor=100;
+                Maze.dArmor=1;
             }
             return true;
         }
@@ -96,7 +131,13 @@ public class Battle {
                     System.out.println("Fled successfully!");
                     break;
                     //knight.map();
-                } else {
+                }
+                else if(e.getName().equals("Giant Serpent")){
+                    Maze.delay(1000);
+                    System.out.println("Giant Serpent:\n\tYou can\'t run from me!");
+                    this.e_Fight();
+                }
+                else {
                     System.out.println("Couldn't flee!");
                     this.e_Fight();
                 }
