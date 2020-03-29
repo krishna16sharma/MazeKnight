@@ -12,7 +12,7 @@ You decide to defeat the dragon for the glory of the kingdom.
 - Can't defeat a foe yet? Then maybe you should explore a bit. Maybe you will stumble across something useful.
 
 ## Instructions
-To run the program, run [Maze.java](Maze.java) which has the main function.
+To run the program, run [Maze.java](src/Maze.java) which has the main function.
 All output is on the console for now. 
 Type the following in the console and hit Enter key when prompted:
 ### Movement on Map
