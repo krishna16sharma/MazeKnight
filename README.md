@@ -8,6 +8,7 @@ You get an opportunity to realize your dream when a dragon raids the kingdom and
 You decide to defeat the dragon for the glory of the kingdom.
 
 ## Gameplay
+- 'X' on the map marks your current position. Give the appropriate input to move around the map.
 - You will meet several enemies along the way. Know when to run and when to fight. You might get help from some people as well.
 - Can't defeat a foe yet? Then maybe you should explore a bit. Maybe you will stumble across something useful.
 
