@@ -1,19 +1,16 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Knight {
+public class Knight extends Character{
     Scanner sc = new Scanner(System.in);
-    int health;
-    int armor;
-    int damage;
     public String alive;
     public String status;
     //ArrayList bag = new ArrayList<>();
 
     Knight(){   //Initialize stats for Knight
-        health=100;
-        armor=10;
-        damage=10;
+        this.setHealth(100);
+        this.setArmor(10);
+        this.setDamage(10);
         status="healthy";
         alive="yes";
     }
@@ -72,7 +69,7 @@ public class Knight {
     //Knight attacks enemies.
     public int Attack(Enemies e){
         int h=e.getHealth();
-        int dmg=(int)(this.damage*this.damage)/(this.damage+e.getArmor());  //damage calculation
+        int dmg=(int)(this.getDamage() * this.getDamage())/(this.getDamage() +e.getArmor());  //damage calculation
         h-=dmg;
         if(h<0){
             h=0;

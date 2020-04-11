@@ -17,10 +17,10 @@ public class bandit extends Enemies{
         System.out.println("Bandit:\n\tYou won't get away!!");
         Maze.delay(2000);
         System.out.println("Bandit:\n\tTAKE THIS!!");
-        int dmg=(int)(20*20)/(20+k.armor);
-        k.health-=dmg;
-        if(k.health<0){
-            k.health=0;
+        int dmg=(int)(20*20)/(20+ k.getArmor());
+        k.setHealth(k.getHealth()-dmg);
+        if(k.getHealth() <0){
+            k.setHealth(0);
         }
         System.out.println("You took "+dmg+" damage!");
     }

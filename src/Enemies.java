@@ -1,17 +1,18 @@
-public class Enemies {
+public class Enemies extends Character{
     private String Name="???";
-    private int health=50;
-    private int armor=25;
-    private int damage=10;
+
 
     public Enemies() throws InterruptedException {
+        setHealth(50);
+        setArmor(25);
+        setDamage(10);
         this.Encounter();
     }
     public int Attack(Knight k){
-        int dmg=(this.damage*this.damage)/(this.damage+k.armor);
-        k.health-=dmg;
-        if(k.health<0){
-            k.health=0;
+        int dmg=(this.getDamage() * this.getDamage())/(this.getDamage() + k.getArmor());
+        k.setHealth(k.getHealth()-dmg);
+        if(k.getHealth() <0){
+            k.setHealth(0);
         }
         return dmg;
     }
@@ -26,30 +27,6 @@ public class Enemies {
 
     public void setName(String name) {
         Name = name;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getArmor() {
-        return armor;
-    }
-
-    public void setArmor(int armor) {
-        this.armor = armor;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
     }
 
     public void SplAction(Enemies e,Knight knight) throws InterruptedException{

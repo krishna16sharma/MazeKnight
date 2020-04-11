@@ -31,7 +31,7 @@ public class Battle {
                    System.out.println("Not just any sword! The legendary Dragonbane Sword!");
                    Maze.delay(2000);
                    System.out.println("You equipped the Dragonbane Sword!");
-                   knight.damage=30;
+                   knight.setDamage(30);
                    Maze.dSword=1;
                    System.out.println("Knight:\n\tThis sword is especially strong against dragons...");
                }
@@ -68,7 +68,7 @@ public class Battle {
                 }
                 Maze.delay(1000);
                 System.out.println("Knight:\n\tLet me tend to my wounds a bit...");
-                knight.health+=30;
+                knight.setHealth(knight.getHealth()+30);
                 finalBattle();
             }
             else if(enemies.getName().equals("Giant Serpent")){
@@ -87,7 +87,7 @@ public class Battle {
                 System.out.println("You equipped the Dragonbane Armor!");
                 System.out.println("Knight:\n\tI hear that this armor is the best in the land.");
                 Maze.delay(1000);
-                knight.armor=100;
+                knight.setArmor(100);
                 Maze.dArmor=1;
             }
             if(enemies.getName().equals("Princess")){
@@ -129,7 +129,7 @@ public class Battle {
         return false;
     }
     public boolean isDefeated(Knight knight){      //Checks if player loses
-        if(knight.health==0){
+        if(knight.getHealth() ==0){
             System.out.println("You were defeated!");
             knight.alive="no";              //Knight dies
             return true;
@@ -203,7 +203,7 @@ public class Battle {
     public void choice(Knight knight) throws InterruptedException{
         while(!isVictorious(knight,e) && !isDefeated(knight)) {
             System.out.println("Your condition:");
-            System.out.println("Health: " + knight.health + "    status: " + knight.status);
+            System.out.println("Health: " + knight.getHealth() + "    status: " + knight.status);
             Maze.delay(300);
             System.out.println(e.getName() + "'s condition:");
             System.out.println("Health: " + e.getHealth());

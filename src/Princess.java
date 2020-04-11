@@ -24,7 +24,7 @@ public class Princess extends Enemies{
            Maze.delay(1000);
            System.out.println("Princess:\n\tThis spell will fry you alive!");
            Maze.delay(1000);
-           k.health+=40;
+           k.setHealth(k.getHealth()+40);
            System.out.println("Knight:\n\tHuh? That didn't hurt.");
            Maze.delay(1000);
            System.out.println("Princess:\n\tEek! I\'m still holding the book of healing spells!\n\tI wanted to heal my dragon..");
@@ -61,10 +61,10 @@ public class Princess extends Enemies{
             System.out.println("Princess:\n\tTake this!");
             Maze.delay(1000);
             System.out.println("Sparks fly towards you!");
-            int dmg = (int) (35 * 35) / (35 + k.armor);
-            k.health -= dmg;
-            if(k.health<0){
-                k.health=0;
+            int dmg = (int) (35 * 35) / (35 + k.getArmor());
+            k.setHealth(k.getHealth()-dmg);
+            if(k.getHealth() <0){
+                k.setHealth(0);
             }
             System.out.println("You took " + dmg + " damage!");
         }
