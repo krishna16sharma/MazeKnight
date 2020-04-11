@@ -5,7 +5,7 @@ A simple, text-based RPG using Java
 ### Story
 In this game you put yourself into the shoes of a knight whose dream is to be recognised by all in the kingdom.
 You get an opportunity to realize your dream when a dragon raids the kingdom and the princess goes missing.
-You decide to defeat the dragon for the glory of the kingdom.
+You decide to defeat the dragon to leave your mark in the kingdom's history.
 
 ## Gameplay
 - 'X' on the map marks your current position. Give the appropriate input to move around the map.
@@ -13,7 +13,7 @@ You decide to defeat the dragon for the glory of the kingdom.
 - Can't defeat a foe yet? Then maybe you should explore a bit. Maybe you will stumble across something useful.
 
 ## Instructions
-To run the program, run [Maze.java](src/Maze.java) which has the main function.
+To run the program, run [Maze.java](src/GameSystem.java) which has the main function.
 All output is on the console for now. 
 Type the following in the console and hit Enter key when prompted:
 ### Movement on Map
