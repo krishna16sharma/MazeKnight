@@ -7,7 +7,7 @@ In this game you put yourself into the shoes of a knight whose dream is to be re
 You get an opportunity to realize your dream when a dragon raids the kingdom and the princess goes missing.
 You decide to defeat the dragon to leave your mark in the kingdom's history.
 
-## Gameplay
+## Gameplay and Hints
 - 'X' on the map marks your current position. Give the appropriate input to move around the map.
 - You will meet several enemies along the way. Know when to run and when to fight. You might get help from some people as well.
 - Can't defeat a foe yet? Then maybe you should explore a bit. Maybe you will stumble across something useful.
@@ -26,4 +26,4 @@ Type the following in the console and hit Enter key when prompted:
 - R : Run away from battle
 
 ## About the project
-The game is by no means perfect but does a good job in demonstrating OOP concepts like Encapsulation, Polymorphism and Inheritance.
+The game is by no means perfect but does a good job in demonstrating OOP concepts like Abstraction, Encapsulation, Polymorphism and Inheritance.
