@@ -3,7 +3,7 @@ A simple, text-based RPG using Java
 
 ## Description
 ### Story
-In this game you put yourself into the shoes of a knight whose dream is to be recognised by all in the kingdom.
+In this game you put yourself into the shoes of a knight whose dream is to be recognized by all in the kingdom.
 You get an opportunity to realize your dream when a dragon raids the kingdom and the princess goes missing.
 You decide to defeat the dragon to leave your mark in the kingdom's history.
 
