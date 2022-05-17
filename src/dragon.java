@@ -32,7 +32,7 @@ public class dragon extends Enemies{
             Maze.delay(1000);
             System.out.println("The dragon is more aggressive!");
             Maze.delay(500);
-            System.out.println("But it seems to have let it's guard down...");
+            System.out.println("But it seems to have let its guard down...");
         }
         else{
             Maze.delay(1000);
